@@ -1,0 +1,22 @@
+##########Cloud-Config
+spring:
+  profiles: 
+    active: docker
+  application:
+    name: cloud-config-server
+  mvc:
+    servlet:
+      path: /cloud-config-server
+server:
+  port: 8092
+# Eureka Server
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URL}
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${random.int}
+    preferIpAddress: true

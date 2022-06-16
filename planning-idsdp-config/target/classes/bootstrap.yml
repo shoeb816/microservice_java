@@ -1,0 +1,13 @@
+##########Cloud-Config
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${CLOUD_CONFIG_URL}
+          #uri: https://gitlab.ibcs-primax.com/planning-sdpp/planning-idsdp-config-server-ymls.git
+          #username: roni29
+          #username: colud-config
+          #password: SOftware428854
+          username: ${CLOUD_CONFIG_USERNAME}
+          password: ${CLOUD_CONFIG_PASSWORD}

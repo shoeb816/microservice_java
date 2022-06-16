@@ -1,0 +1,25 @@
+##########Cloud-Config
+version: '3.7'
+services:
+  planning-idsdp-config:
+    image: 'idsdp-config'
+    container_name: config
+    environment:
+      - TZ=Asia/Dhaka
+    networks:
+         - sdpp01_net
+    ports:
+      - "8092:8092"
+    #Volume mounted for database for the storage
+    volumes:
+      - idsdp-config:/var/lib/docker/volumes/idsdp-config/_data
+    build:
+      context: "./"
+      dockerfile: "Dockerfile"
+    restart: always
+networks:
+   sdpp01_net:
+     name: sdpp01_net
+#Volumes for DB data
+volumes:
+  idsdp-config:
